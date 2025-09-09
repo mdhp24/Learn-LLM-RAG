@@ -97,11 +97,10 @@ def response_query(database, query):
 
 
 def clean_response(text):
-    # hapus blok <think>...</think>
     cleaned = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
 
-    # hapus awalan "Jawaban:" kalau masih muncul
     cleaned = re.sub(r"^Jawaban:\s*", "", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"^Answer:\s*", "", cleaned, flags=re.IGNORECASE)
 
     return cleaned.strip()
 
@@ -119,3 +118,4 @@ if __name__ == "__main__":
         print("Chatbot: ", response)
 
     print("Chat Bot is closing...")
+
